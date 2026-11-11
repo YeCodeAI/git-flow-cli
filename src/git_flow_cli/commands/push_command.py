@@ -43,7 +43,7 @@ def push():
     branch_result = runner.run(['branch', '--show-current'])
     current_branch = branch_result.strip() or 'main'
 
-    push_result = runner.run(['push', '-u', 'origin', current_branch])
+    push_result = runner.run(['push', '-u', 'origin', current_branch, '--force'])
 
     if 'error' in push_result.lower() or 'fatal' in push_result.lower():
         ui.error('Ошибка при отправке на GitHub!')
