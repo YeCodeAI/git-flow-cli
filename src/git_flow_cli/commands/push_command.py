@@ -23,10 +23,10 @@ def push():
             ui.info('Linking the repository...')
             runner.run(['remote', 'add' ,'origin', repo_url])
 
-        message = inquirer.text(
-            message='Enter the commit text (message):',
-            default='Auto-sync update'
-        ).execute()
+    message = inquirer.text(
+        message='Enter the commit text (message):',
+        default='Auto-sync update'
+    ).execute()
 
     ui.info('Step 1: Preparing files')
     add_result = runner.run(['add', '.'])

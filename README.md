@@ -2,7 +2,7 @@
 
 > A modern CLI utility for automating Git workflows, fast staging, smart commits, and pushing code to GitHub. Built with Python.
 
-## Tech Synk:
+## Tech Stack:
 - **Python 3.13**
 - **uv**: Extremely fast Python package and project manager.
 - **Typer**: For building intuitive and robust CLI applications.
