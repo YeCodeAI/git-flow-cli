@@ -40,6 +40,7 @@ def push():
 
     ui.info('Step 3: Pushing changes to the remote repository (git push)...')
 
+    runner.run(['brahch', '-M', 'main'])
     push_result = runner.run(['push', '-u', 'origin', 'main', '--force'])
 
     if 'error' in push_result.lower() or 'fatal' in push_result.lower():
