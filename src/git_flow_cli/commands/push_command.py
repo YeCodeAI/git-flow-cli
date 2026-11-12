@@ -45,8 +45,16 @@ def push():
 
     push_result = runner.run(['push', '-u', 'origin', current_branch, '--force'])
 
+    if 'error' in push_result.lower() or 'fatal' in push_result.lower() or 'fetch first' in push_result.lower():
+        ui.warning('Detected divergent histories or remote updates. Attempting auto-merge...')
+        
+        pull_result = runner.run(['pull', 'origin', current_branch, '--allow-unrelated-histories', '--no-rebase'])
+        ui.log(pull_result.strip())
+        
+        push_result = runner.run(['push', '-u', 'origin', current_branch])
+
     if 'error' in push_result.lower() or 'fatal' in push_result.lower():
-        ui.error('Ошибка при отправке на GitHub!')
+        ui.error('Error while sending to GitHub!')
         ui.print_panel(text=push_result.strip(), title='[bold red]Git Error[/bold red')
 
     else:
