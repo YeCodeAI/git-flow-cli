@@ -40,18 +40,7 @@ def push():
 
     ui.info('Step 3: Pushing changes to the remote repository (git push)...')
 
-    branch_result = runner.run(['branch', '--show-current'])
-    current_branch = branch_result.strip() or 'main'
-
-    push_result = runner.run(['push', '-u', 'origin', current_branch, '--force'])
-
-    if 'error' in push_result.lower() or 'fatal' in push_result.lower() or 'fetch first' in push_result.lower():
-        ui.warning('Detected divergent histories or remote updates. Attempting auto-merge...')
-        
-        pull_result = runner.run(['pull', 'origin', current_branch, '--allow-unrelated-histories', '--no-rebase'])
-        ui.log(pull_result.strip())
-        
-        push_result = runner.run(['push', '-u', 'origin', current_branch])
+    push_result = runner.run(['push', '-u', 'origin', 'main', '--force'])
 
     if 'error' in push_result.lower() or 'fatal' in push_result.lower():
         ui.error('Error while sending to GitHub!')
