@@ -19,7 +19,7 @@ class UI:
     def log(self, text: str) -> None:
         console.log(text)
     
-    def print_panel(selrf, text: str, title: str) -> None:
+    def print_panel(self, text: str, title: str) -> None:
         panel = Panel(
             text,
             title=title,
