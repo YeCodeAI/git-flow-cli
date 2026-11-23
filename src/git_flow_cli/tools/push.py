@@ -17,13 +17,13 @@ def push() -> None:
         ui.warning('.git not created. Starting initialization...')
         runner.run(['git', 'init'])
         ui.success('.git to live successfully!')
-    ui.info('.git is founded!')
+    ui.info('.git is found!')
 
     # Check and adding remote
     remote_check = runner.run(['git' ,'remote', 'get-url', 'origin'])
 
     if 'error' in remote_check.stderr.lower() or not remote_check.stderr.strip():
-        ui.warning('Repository in not found')
+        ui.warning('Repository is not found')
 
         repo_url = inquirer.text(
             message='Enter the URL of your GitHub repository:',
@@ -44,10 +44,10 @@ def push() -> None:
         ui.error('Error adding files!')
 
     # Commit
-    ui.log('Step 3: Prepares a commit')
+    ui.log('Step 3: Preparing a commit')
 
     commit_msg = inquirer.text(
-        message='Enter the commint',
+        message='Enter the commit',
         default='Update project',
         validate=EmptyInputValidator()
     ).execute()
